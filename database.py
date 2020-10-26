@@ -3,6 +3,8 @@ import sys
 import json
 import craw_domain
 
+mydomain = craw_domain.domain
+
 try:
     conn = pymysql.connect(host='localhost',
                             user='root',  
@@ -32,10 +34,9 @@ def insert_db(cur, mydomain, sub_all):
     cur.execute("DELETE  FROM subdomain WHERE domain='{}'".format(mydomain))
     cur.execute("INSERT INTO subdomain (domain, subdomain) values ('"+mydomain+"','"+sub_all+"')")
     conn.commit()
+sub_all = craw_domain.main()
 
-if __name__ == "__main__":
-    sub_all = craw_domain.main()
-    mydomain = craw_domain.domain
+def main(mydomain, cur, sub_all):
     sub_in_mysql = select_db(cur, mydomain)
     if sub_in_mysql == {}:
         sub_js = json.dumps(sub_all)
@@ -49,3 +50,4 @@ if __name__ == "__main__":
                 sub_in_mysql[key] = value
         sub_js = json.dumps(sub_in_mysql)
         insert_db(cur, mydomain, sub_js)
+    return sub_js

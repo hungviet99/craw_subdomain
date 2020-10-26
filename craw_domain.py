@@ -6,15 +6,16 @@ import config
 import sys
 
 domain = input("Nhap vao domain: ")
-st = SecurityTrails(config.api_st)
 nmap = nmap3.Nmap()
 vt = VirusTotalPublicApi(config.api_vt)
 
 sub_nmap = nmap.nmap_dns_brute_script(domain)
-sub_st = st.domain_subdomains(domain)
-sub_vt = vt.get_domain_report(domain)
 
+st = SecurityTrails(config.api_st)
+sub_st = st.domain_subdomains(domain)
 sudomain_st = sub_st['subdomains']
+sub_vt = vt.get_domain_report(domaini)
+
 subdomain_vt = sub_vt['results']['subdomains']
 
 
