@@ -7,7 +7,8 @@ mydomain = craw_domain.domain
 
 try:
     conn = pymysql.connect(host='localhost',
-                            user='root',  
+                            user='config.user',
+                            password='config.password',  
                             database="craw_domain", 
                             port=3306)
 except Exception as ex:
