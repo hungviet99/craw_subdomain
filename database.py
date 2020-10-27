@@ -3,8 +3,7 @@ import sys
 import json
 import craw_domain
 
-mydomain = craw_domain.domain
-
+# Thực hiện connect tới database
 try:
     conn = pymysql.connect(host='localhost',
                             user='config.user',
@@ -14,10 +13,11 @@ try:
 except Exception as ex:
     print("Error connecting: " + str(ex))
     sys.exit(1)
-
 cur = conn.cursor()
 
 def select_db(cur, domain):
+    """Lấy ra dữ liệu của subdomain từ Mysql
+    """
     try:
         sub_in_mysql= {}
         cur.execute("SELECT subdomain from subdomain where domain ='{}'".format(domain))
@@ -32,12 +32,19 @@ def select_db(cur, domain):
     return sub_in_mysql
 
 def insert_db(cur, mydomain, sub_all):
+    """Ghi dữ liệu vào Mysql
+    """
     cur.execute("DELETE  FROM subdomain WHERE domain='{}'".format(mydomain))
     cur.execute("INSERT INTO subdomain (domain, subdomain) values ('"+mydomain+"','"+sub_all+"')")
     conn.commit()
-sub_all = craw_domain.main()
 
-def main(mydomain, cur, sub_all):
+def main(mydomain, cur):
+    """Xử lý dữ liệu
+    Nếu không có dữ liệu trong database thì ghi luôn vào database
+    Nếu có dữ liệu cũ thì cập nhật dữ liệu rồi ghi vào database
+    """
+    mydomain = craw_domain.domain
+    sub_all = craw_domain.main()
     sub_in_mysql = select_db(cur, mydomain)
     if sub_in_mysql == {}:
         sub_js = json.dumps(sub_all)
