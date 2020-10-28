@@ -4,6 +4,7 @@
 
 ```
 apt install -y git nmap 
+apt install python3-pip
 cd /opt
 git clone https://github.com/hungviet99/craw_subdomain.git
 apt install mysql-server
@@ -22,7 +23,7 @@ Sau đó, hãy đăng nhập vào mysql và thực hiện tạo csdl để lưu 
 Đăng nhập vào cơ sở dữ liệu và thực hiện tạo csdl như sau: 
 
 ```
-creat database craw_domain;
+create database craw_domain;
 ```
 ```
 use craw_domain;
@@ -31,7 +32,7 @@ use craw_domain;
 CREATE TABLE `subdomain` (
   domain varchar(255) NULL,
   subdomain json DEFAULT NULL
-)
+);
 ```
 ```
 grant all privileges on craw_domain.* to "subuser"@"localhost" identified by 'Subdomain2020@';
@@ -57,7 +58,7 @@ Chỉnh sửa file config.
 ```
 sed -i 's/api_vt =/api_vt= "17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967"/' /opt/craw_subdomain/config.py
 ```
->Lưu ý: Thay `17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967` bầng api của bạn.
+>Lưu ý: Thay `17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967` bằng api của bạn.
 
 ### Chạy chương trình 
 
