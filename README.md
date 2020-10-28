@@ -103,8 +103,10 @@ python3 main.py
 
 - Sau khi chạy tool, kết quả được in ra màn hình: 
 
-![](./image/sdm1.png)
+![](./image/sdm3.png)
 
 - Kiểm tra kết quả trong database
+
+
 
 ![](./image/sdm2.png)
