@@ -107,6 +107,4 @@ python3 main.py
 
 - Kiểm tra kết quả trong database
 
-
-
 ![](./image/sdm2.png)
