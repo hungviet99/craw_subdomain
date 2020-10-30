@@ -1,0 +1,12 @@
+[Unit]
+Description= Craw subdomain 
+After=network.target
+
+[Service]
+PermissionsStartOnly=True
+User=root
+Group=root
+ExecStart=/opt/craw_subdomain/tele_subdomain/env/bin/python3 /opt/craw_subdomain/tele_subdomain/main.py --serve-in-foreground
+
+[Install]
+WantedBy=multi-user.target
