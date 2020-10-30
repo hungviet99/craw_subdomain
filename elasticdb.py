@@ -34,9 +34,10 @@ def update_db_elastic(_id, update_data):
     )
     return res
 
-def main():
+if __name__ == "__main__":
     mydomain = craw_domain.domain
     sub_all = craw_domain.main()
+    print(sub_all)
     try:
         """Nếu không có dữ liệu thì ghi dữ liệu vào
         """
