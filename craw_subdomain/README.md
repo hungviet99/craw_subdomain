@@ -87,6 +87,22 @@ systemctl enable elasticsearch
 systemctl status elasticsearch
 ```
 
+- Tạo Index 
+
+```
+curl -X PUT "localhost:9200/subdomain?pretty"
+```
+
+- Set limit
+
+```
+curl -X PUT "localhost:9200/subdomain/_settings?pretty" -H 'Content-Type: application/json' -d'
+{
+  "index.mapping.total_fields.limit": 10000000000
+}
+'
+```
+
 ### 4. Tạo tài khoản Virustotal 
 
 Truy cập virustotal và kích vào tạo tài khoản. 
@@ -143,7 +159,7 @@ python3 main.py
 **Nếu muốn lưu vào elasticsearch**
 
 ```
-python3 python3 elasticdb.py
+python3 elasticdb.py
 ```
 
 ### 6. Kết quả 
