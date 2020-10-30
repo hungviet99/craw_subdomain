@@ -1,0 +1,7 @@
+virustotal-api==1.1.11
+python3-nmap==1.4.8
+requests==2.24.0
+PyMySQL==0.10.1
+elasticsearch==7.9.1
+python-telegram-bot==12.8
+pyTelegramBotAPI==3.7.1
