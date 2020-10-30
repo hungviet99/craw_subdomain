@@ -167,7 +167,7 @@ python3 python3 elasticdb.py
 - Kiểm tra kết quả trong DB của elastic bằng lệnh sau
 
 ```
-curl -X GET http://localhost:9200/subdomain/_doc/logz.io
+curl -X GET http://localhost:9200/subdomain/_doc/<Tên domain>
 ```
 
 ![](./image/sdm5.png)
