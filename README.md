@@ -1,4 +1,4 @@
-# craw_subdomain
+# Craw Subdomain
 
 Tool sử dụng để craw các subdomain và in ra ác subdomain cùng ip của subdomain đó, đồng thời lưu vào database của elasticseach hoặc mysql. 
 
