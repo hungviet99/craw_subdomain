@@ -123,7 +123,7 @@ Thay `918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw` bằng token bot của bạ
 sed -i 's/CHAT_ID =/CHAT_ID = "633940211"/' /opt/craw_subdomain/tele_subdomain/config.py
 ```
 
-Thay id `633940211` bằng chat của bạn hoặc của group muốn nhận tin nhắn
+Thay id `633940211` bằng chat id của bạn hoặc của group muốn nhận tin nhắn
 
 #### 4.3 Tạo service subcraw
 
@@ -147,11 +147,14 @@ systemctl enable subcraw
 ```
 chmod +x /opt/craw_subdomain/tele_subdomain/checkservice.sh
 ```
+
+Sử dụng lệnh `crontab -e` sau đó ghi vào file contab nội dung sau:
 ```
 */20 * * * * /opt/craw_subdomain/tele_subdomain/checkservice.sh > /dev/null 2>&1
 ```
 
 ### 5. Kết quả 
+
 Truy cập vào telegram
 
 - Gõ `/start` để xem hướng dẫn  
