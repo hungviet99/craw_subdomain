@@ -42,7 +42,7 @@ def st_and_vt_scan(list_nmap, subdomain_vt):
             list_st.append(element)
     return list_st
 
-# Kiam tra va loai bo cac domain cũ
+# Kiem tra va loai bo cac domain cũ
 def check_subdomain(list_st):
     """Kiểm tra các bản ghi của domain, loại bỏ domain cũ
     """
