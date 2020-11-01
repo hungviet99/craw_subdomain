@@ -59,7 +59,10 @@ def main(domain):
     """Lấy dữ liệu về các domain, ghi vào sub_all
     """
     sub_nmap = Connect_nmap(domain)
-    subdomain_vt = Connect_vt(domain)
+    try:
+        subdomain_vt = Connect_vt(domain)
+    except:
+        subdomain_vt = []
     list_nmap = nmap_scan(sub_nmap)
     list_st_vt = st_and_vt_scan(list_nmap, subdomain_vt)
     sub_all = check_subdomain(list_st_vt)
