@@ -1,4 +1,7 @@
 import Telebot
+import readdomain
+import threading
 
 if __name__ == "__main__":
-        Telebot.main()
+        threading.Thread(target=Telebot.main).start()
+        threading.Thread(target=readdomain.main).start()

@@ -21,7 +21,7 @@ def main():
         domain = message.text[8:]
         sub_all = craw_domain.main(domain)
         if not sub_all:
-            bot.send_message(config.CHAT_ID, "Domain no info !!")
+            bot.reply_to(message, "Domain no info !!")
         else:
             elasticdb.main(domain, sub_all)
             res = elasticdb.search_by_index_and_id(domain)
@@ -36,13 +36,13 @@ def main():
                 """
                 for x in range(0, len(sub_all_cv), 4096):
                     try:
-                        bot.send_message(config.CHAT_ID, "Tìm thấy: " +
+                        bot.reply_to(message, "Tìm thấy: " +
                                          str(len(sub_all_1)) +
                                          " subdomain" + '\n\n' +
                                          sub_all_cv[x:x+4096],
                                          parse_mode='Markdown')
                     except:
-                        bot.send_message(config.CHAT_ID, "Tìm thấy: " +
+                        bot.reply_to(message, "Tìm thấy: " +
                                          str(len(sub_all_1)) + 
                                          " subdomain" + '\n\n' +
                                          sub_all_cv[x:x+4096])
@@ -50,11 +50,11 @@ def main():
                 """Nếu list domain nhỏ hơn 4096 ký tự
                 """
                 try:
-                    bot.send_message(config.CHAT_ID, "Tìm thấy: " +
+                    bot.reply_to(message, "Tìm thấy: " +
                                      str(len(sub_all_1)) + " subdomain" + '\n\n' +
                                      sub_all_cv, parse_mode='Markdown')
                 except:
-                    bot.send_message(config.CHAT_ID, "Tìm thấy :" +
+                    bot.reply_to(message, "Tìm thấy :" +
                                      str(len(sub_all_1)) + " subdomain" + '\n\n' +
                                      sub_all_cv)
     bot.polling()
