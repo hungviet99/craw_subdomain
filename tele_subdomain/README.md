@@ -162,6 +162,6 @@ Truy cập vào telegram
 
 ![](./image/kq1.png)
 
-- Tuyền vào tên domain sẽ có các subdomain được gửi về 
+- Truyền vào tên domain sẽ có các subdomain được gửi về 
 
 ![](./image/kq2.png)
