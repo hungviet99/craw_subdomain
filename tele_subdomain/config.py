@@ -1,5 +1,5 @@
 #api virus total
-api_vt =
+API_VT =
 
 # Token của BOT telegram 
 TOKEN_TELE =

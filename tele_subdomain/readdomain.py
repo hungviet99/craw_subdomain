@@ -7,11 +7,13 @@ import sys
 bot = telebot.TeleBot(config.TOKEN_TELE)
 
 def main():
-    """Đọc file opendns-top-domains.txt để lấy tên các domain 
+    """
+    Đọc file opendns-top-domains.txt để lấy tên các domain 
     """
     f = open("/opt/craw_subdomain/tele_subdomain/opendns-top-domains.txt", "r")
     for domain in f:
-        """Sử dụng tên domain để tìm các subdomain
+        """
+        Sử dụng tên domain để tìm các subdomain
         """
         sub_all = craw_domain.main(domain)
         if not sub_all:

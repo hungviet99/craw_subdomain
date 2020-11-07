@@ -5,8 +5,9 @@ Tool sử dụng để craw các subdomain sau đó gửi kết quả về teleg
 ### 1. Cài đặt các gói cần thiết 
 
 ```
-apt install -y git nmap 
-apt install python3-pip
+apt-get update -y
+apt install -y git nmap curl
+apt install python3-pip -y
 ```
 
 ### 2. Cài đặt elasticsearch 
@@ -105,7 +106,7 @@ pip3 install -r requirements.txt
 - Thêm api virustotal
 
 ```
-sed -i 's/api_vt =/api_vt = "17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967"/' /opt/craw_subdomain/tele_subdomain/config.py
+sed -i 's/API_VT =/API_VT = "17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967"/' /opt/craw_subdomain/tele_subdomain/config.py
 ```
 >Lưu ý: Thay `17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967` bằng api virustotal của bạn.
 

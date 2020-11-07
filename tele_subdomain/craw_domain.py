@@ -4,15 +4,17 @@ from virus_total_apis import PublicApi as VirusTotalPublicApi
 import config
 import sys
 
-def Connect_nmap(domain):
-    """Connect to nmap API
+def connect_nmap(domain):
+    """
+    Connect to nmap API
     """
     nmap = nmap3.Nmap()
     sub_nmap = nmap.nmap_dns_brute_script(domain)
     return sub_nmap
 
 def nmap_scan(sub_nmap):
-    """Xử lý dữ liệu của nmap
+    """
+    Xử lý dữ liệu của nmap
     """
     list_nmap = []
     for dist in sub_nmap:
@@ -20,16 +22,18 @@ def nmap_scan(sub_nmap):
         list_nmap.append(apsub)
     return list_nmap
 
-def Connect_vt(domain):
-    """Connect to virustotal API
+def connect_vt(domain):
     """
-    vt = VirusTotalPublicApi(config.api_vt)
+    Connect to virustotal API
+    """
+    vt = VirusTotalPublicApi(config.API_VT)
     sub_vt = vt.get_domain_report(domain)
     subdomain_vt = sub_vt['results']['subdomains']
     return subdomain_vt
 
 def st_and_vt_scan(list_nmap, subdomain_vt):
-    """Xử lý dữ liệu của securityTrails và Virustotal
+    """
+    Xử lý dữ liệu của securityTrails và Virustotal
     Xử lý các kết quả trùng nhau
     """
     list_st = []
@@ -44,7 +48,8 @@ def st_and_vt_scan(list_nmap, subdomain_vt):
 
 # Kiem tra va loai bo cac domain cũ
 def check_subdomain(list_st):
-    """Kiểm tra các bản ghi của domain, loại bỏ domain cũ
+    """
+    Kiểm tra các bản ghi của domain, loại bỏ domain cũ
     """
     sub_all = {}
     for ele in list_st:
@@ -56,7 +61,8 @@ def check_subdomain(list_st):
     return sub_all
 
 def main(domain):
-    """Lấy dữ liệu về các domain, ghi vào sub_all
+    """
+    Lấy dữ liệu về các domain, ghi vào sub_all
     """
     sub_nmap = Connect_nmap(domain)
     try:

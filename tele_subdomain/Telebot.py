@@ -8,15 +8,17 @@ bot = telebot.TeleBot(config.TOKEN_TELE)
 
 @bot.message_handler(commands=["start"])
 def send_devices(message):
-    """Tạo lệnh start để hướng dẫn sử dụng 
     """
-    bot.reply_to(message, "Nhập vào /domain <tên domain> " +
-                        "để xem các subdomain. VD: /domain hungnv.com")
+    Tạo lệnh start để hướng dẫn sử dụng 
+    """
+    bot.reply_to(message, "Nhập vào /subdns <tên domain> " +
+                        "để xem các subdomain. VD: /subdns hungnv.com")
 
 def main():
-    @bot.message_handler(commands=["domain"])
+    @bot.message_handler(commands=["subdns"])
     def send_subdomain(message):
-        """Tạo lệnh để truyền vào domain từ telegram
+        """
+        Tạo lệnh để truyền vào domain từ telegram
         """
         domain = message.text[8:]
         sub_all = craw_domain.main(domain)
@@ -32,7 +34,8 @@ def main():
                 sub_all_1.append(key)
             sub_all_cv = str(sub_all_1)
             if len(sub_all_cv) > 4096:
-                """Nếu list domain lớn hơn 4096 ký tự
+                """
+                Nếu list domain lớn hơn 4096 ký tự
                 """
                 for x in range(0, len(sub_all_cv), 4096):
                     try:
@@ -47,7 +50,8 @@ def main():
                                          " subdomain" + '\n\n' +
                                          sub_all_cv[x:x+4096])
             else:
-                """Nếu list domain nhỏ hơn 4096 ký tự
+                """
+                Nếu list domain nhỏ hơn 4096 ký tự
                 """
                 try:
                     bot.reply_to(message, "Tìm thấy: " +
