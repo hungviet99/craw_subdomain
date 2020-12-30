@@ -83,13 +83,13 @@ Lưu lại api key để dùng cho bước sau.
 ```
 cd /opt
 git clone https://github.com/hungviet99/craw_subdomain.git
-rm -rf /opt/craw_subdomain/craw_subdomain
+rm -rf /opt/craw_subdomain
 ```
 
 - Cài đặt môi trường ảo python
 
 ```
-cd /opt/craw_subdomain/tele_subdomain
+cd /opt/craw_subdomain
 pip3 install virtualenv
 virtualenv env -p python3.6
 source env/bin/activate
@@ -106,14 +106,14 @@ pip3 install -r requirements.txt
 - Thêm api virustotal
 
 ```
-sed -i 's/API_VT =/API_VT = "17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967"/' /opt/craw_subdomain/tele_subdomain/config.py
+sed -i 's/API_VT =/API_VT = "17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967"/' /opt/craw_subdomain/config.py
 ```
 >Lưu ý: Thay `17cd6d28652ea7dd99a0ea9abbfe07c68ecf8ath01e950fgdf2365af80b05967` bằng api virustotal của bạn.
 
 - Thêm token bot 
 
 ```
-sed -i 's/TOKEN_TELE =/TOKEN_TELE = "918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw"/' /opt/craw_subdomain/tele_subdomain/config.py
+sed -i 's/TOKEN_TELE =/TOKEN_TELE = "918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw"/' /opt/craw_subdomain/config.py
 ```
 
 Thay `918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw` bằng token bot của bạn
@@ -121,7 +121,7 @@ Thay `918364925:AAGbl5y7463f8DFFx4RhkeB3_eRhUUNfHHw` bằng token bot của bạ
 - Thêm Chat ID
 
 ```
-sed -i 's/CHAT_ID =/CHAT_ID = "633940211"/' /opt/craw_subdomain/tele_subdomain/config.py
+sed -i 's/CHAT_ID =/CHAT_ID = "633940211"/' /opt/craw_subdomain/config.py
 ```
 
 Thay id `633940211` bằng chat id của bạn hoặc của group muốn nhận cảnh báo về trạng thái khi scan domain
@@ -131,7 +131,7 @@ Thay id `633940211` bằng chat id của bạn hoặc của group muốn nhận 
 - Chuyển file service vào systemd
 
 ```
-mv /opt/craw_subdomain/tele_subdomain/subcraw.service /etc/systemd/system/subcraw.service
+mv /opt/craw_subdomain/subcraw.service /etc/systemd/system/subcraw.service
 ```
 
 - Khởi động dich vụ subcraw
@@ -146,13 +146,13 @@ systemctl enable subcraw
 - Đặt cron kiểm tra service 
 
 ```
-chmod +x /opt/craw_subdomain/tele_subdomain/checkservice.sh
+chmod +x /opt/craw_subdomain/checkservice.sh
 ```
 
 Sử dụng lệnh `crontab -e` sau đó ghi vào file contab nội dung sau:
 
 ```
-*/20 * * * * /opt/craw_subdomain/tele_subdomain/checkservice.sh > /dev/null 2>&1
+*/20 * * * * /opt/craw_subdomain/checkservice.sh > /dev/null 2>&1
 ```
 
 ### 5. Kết quả 
