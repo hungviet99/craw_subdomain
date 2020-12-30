@@ -83,7 +83,6 @@ Lưu lại api key để dùng cho bước sau.
 ```
 cd /opt
 git clone https://github.com/hungviet99/craw_subdomain.git
-rm -rf /opt/craw_subdomain
 ```
 
 - Cài đặt môi trường ảo python
